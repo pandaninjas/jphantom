@@ -46,6 +46,7 @@ public class JarExtender
                 for (JarEntry entry : Collections.list(injar.entries())) {
                     // Get an input stream for the entry.
                     InputStream entryStream = injar.getInputStream(entry);
+                    entry.setCompressedSize(-1); // force java to recalculate compressed size, preventing an error 
 
                     // Read the entry and write it to the temp jar.
                     outjar.putNextEntry(entry);
@@ -80,6 +81,7 @@ public class JarExtender
 
                 // Create a jar entry and add it to the temp jar.
                 JarEntry entry = new JarEntry(file.toString().replace("\\", "/"));
+                entry.setCompressedSize(-1); // force java to recalculate compressed size, preventing an error 
                 jar.putNextEntry(entry);
 
                 // Read the file and write it to the jar.
