@@ -53,7 +53,7 @@ public class TypeConstraintExtractor extends AbstractExtractor
         // Analyze Method
         try {
             analyzer.analyze(cName, meth);
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             return;
         }
 
