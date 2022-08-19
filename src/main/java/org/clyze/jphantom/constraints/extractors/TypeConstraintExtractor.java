@@ -51,7 +51,11 @@ public class TypeConstraintExtractor extends AbstractExtractor
         returnType = Type.getReturnType(meth.desc);
 
         // Analyze Method
-        analyzer.analyze(cName, meth);
+        try {
+            analyzer.analyze(cName, meth);
+        } catch (RuntimeException e) {
+            return;
+        }
 
         MethodConstraintExtractor mv = new MethodConstraintExtractor();
 
