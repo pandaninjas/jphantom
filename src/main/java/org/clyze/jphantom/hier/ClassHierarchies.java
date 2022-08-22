@@ -57,7 +57,7 @@ public class ClassHierarchies implements Opcodes, Types
         try {
             ClassHierarchy hierarchy = new IncrementalClassHierarchy();
 
-            for (Enumeration<JarEntry> e = file.entries(); e.hasMoreElements();)
+            label1: for (Enumeration<JarEntry> e = file.entries(); e.hasMoreElements();)
             {
                 JarEntry entry = e.nextElement();
 
@@ -70,7 +70,11 @@ public class ClassHierarchies implements Opcodes, Types
                     continue;
 
                 try (InputStream stream = file.getInputStream(entry)) {
-                    ClassReader reader = new ClassReader(stream);
+                    try {
+                        ClassReader reader = new ClassReader(stream);
+                    } catch (Exception e) {
+                        continue label1;
+                    }
                     String ifaceNames[] = reader.getInterfaces();
 
                     // Compute Types
