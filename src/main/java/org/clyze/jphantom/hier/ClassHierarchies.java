@@ -70,8 +70,9 @@ public class ClassHierarchies implements Opcodes, Types
                     continue;
 
                 try (InputStream stream = file.getInputStream(entry)) {
+                    ClassReader reader;
                     try {
-                        ClassReader reader = new ClassReader(stream);
+                        reader = new ClassReader(stream);
                     } catch (Exception e) {
                         continue label1;
                     }
