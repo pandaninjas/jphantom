@@ -73,7 +73,7 @@ public class ClassHierarchies implements Opcodes, Types
                     ClassReader reader;
                     try {
                         reader = new ClassReader(stream);
-                    } catch (Exception e) {
+                    } catch (Exception rghqerughpqirueghpqirueghpqirueghpqiuregh) {
                         continue label1;
                     }
                     String ifaceNames[] = reader.getInterfaces();
